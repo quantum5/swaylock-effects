@@ -339,8 +339,11 @@ static void initially_render_surface(struct swaylock_surface *surface) {
 		wl_region_destroy(region);
 	}
 
-	render_frame_background(surface);
-	render_background_fade_prepare(surface, surface->current_buffer);
+	if (render_begin(surface)) {
+		render_frame_background(surface);
+		render_background_fade_prepare(surface, surface->current_buffer);
+		render_end(surface);
+	}
 	render_frame(surface);
 }
 
@@ -390,7 +393,10 @@ static void surface_frame_handle_done(void *data, struct wl_callback *callback,
 		surface->dirty = false;
 
 		if (!fade_is_complete(&surface->fade)) {
-			render_background_fade(surface, time);
+			if (render_begin(surface)) {
+				render_background_fade(surface, time);
+				render_end(surface);
+			}
 			surface->dirty = true;
 		}
 

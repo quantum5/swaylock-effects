@@ -7,6 +7,12 @@
 #include "background-image.h"
 #include "swaylock.h"
 
+// glib might or might not have already defined MIN,
+// depending on whether we have pixbuf or not...
+#ifndef MIN
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#endif
+
 #define M_PI 3.14159265358979323846
 const float TYPE_INDICATOR_RANGE = M_PI / 3.0f;
 const float TYPE_INDICATOR_BORDER_THICKNESS = M_PI / 128.0f;
@@ -191,6 +197,30 @@ void render_frame(struct swaylock_surface *surface) {
 
 	if (state->args.indicator ||
 			(upstream_show_indicator && state->auth_state != AUTH_STATE_GRACE)) {
+		// Draw indicator image
+		cairo_surface_t *image = state->indicator_image;
+		if (image) {
+			int height = cairo_image_surface_get_height(image);
+			int width = cairo_image_surface_get_width(image);
+			int smallest = MIN(height, width);
+			double radius = arc_radius - arc_thickness * 0.5;
+			double scale = radius * 2 / smallest;
+			double offset = buffer_diameter * 0.5 / scale - smallest * 0.5;
+
+			// Create the arc that clips the image
+			cairo_arc(cairo,
+					buffer_diameter * 0.5,
+					buffer_diameter * 0.5,
+					radius,
+					0, 2 * M_PI);
+			// Scale cairo to make image fit the indicator
+			cairo_scale(cairo, scale, scale);
+			cairo_set_source_surface(cairo, image, offset, offset);
+			// Scale cairo back
+			cairo_scale(cairo, 1 / scale, 1 / scale);
+			cairo_fill(cairo);
+		}
+
 		// Fill inner circle
 		cairo_set_line_width(cairo, 0);
 		cairo_arc(cairo, buffer_width / 2, buffer_diameter / 2,

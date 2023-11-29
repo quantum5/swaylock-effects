@@ -138,6 +138,7 @@ sources = [
 	'loop.c',
 	'main.c',
 	'password.c',
+	'password-buffer.c',
 	'pool-buffer.c',
 	'render.c',
 	'seat.c',

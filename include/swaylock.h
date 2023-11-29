@@ -163,7 +163,6 @@ void swaylock_handle_touch(struct swaylock_state *state);
 void render_frame_background(struct swaylock_surface *surface, bool commit);
 void render_background_fade(struct swaylock_surface *surface, uint32_t time);
 void render_frame(struct swaylock_surface *surface);
-void render_frames(struct swaylock_state *state);
 void damage_surface(struct swaylock_surface *surface);
 void damage_state(struct swaylock_state *state);
 void clear_password_buffer(struct swaylock_password *pw);

@@ -1,7 +1,7 @@
 project(
 	'swaylock',
 	'c',
-	version: '1.6.11',
+	version: '1.7',
 	license: 'MIT',
 	meson_version: '>=0.59.0',
 	default_options: [
@@ -42,8 +42,6 @@ endif
 
 wayland_client = dependency('wayland-client', version: '>=1.20.0')
 wayland_protos = dependency('wayland-protocols', version: '>=1.25', fallback: 'wayland-protocols')
-# use native version of wayland-scanner when cross-compiling
-# meson does this too: https://github.com/mesonbuild/meson/blob/c649a2b8c59c9f49affca9bd89c126bfa0f54449/mesonbuild/modules/unstable_wayland.py#L48-L53
 wayland_scanner = dependency('wayland-scanner', version: '>=1.15.0', native: true)
 xkbcommon = dependency('xkbcommon')
 cairo = dependency('cairo')
@@ -59,7 +57,7 @@ dl = cc.find_library('dl')
 
 git = find_program('git', required: false)
 scdoc = find_program('scdoc', required: get_option('man-pages'))
-wayland_scanner_prog = find_program(wayland_scanner.get_variable('wayland_scanner'))
+wayland_scanner_prog = find_program(wayland_scanner.get_variable('wayland_scanner'), native: true)
 
 version = '"@0@"'.format(meson.project_version())
 if git.found() and import('fs').is_dir('.git')

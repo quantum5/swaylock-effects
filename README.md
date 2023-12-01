@@ -89,13 +89,13 @@ The following table shows the relation between the swaylock-effect and swaylock 
 * Alpine Linux: [swaylock-effects](https://pkgs.alpinelinux.org/packages?name=swaylock-effects)
 * Arch Linux (AUR): [swaylock-effects](https://aur.archlinux.org/packages/swaylock-effects/) / [swaylock-effects-git](https://aur.archlinux.org/packages/swaylock-effects-git/)
 * Fedora (Copr): [swaylock-effects](https://copr.fedorainfracloud.org/coprs/trs-sod/swaylock-effects)
+* FreeBSD: [swaylock-effects](https://www.freshports.org/x11/swaylock-effects/)
 
 The original [mortie/swaylock-effects](https://github.com/mortie/swaylock-effects) (now unmaintained)
 has been packaged for:
 
 * Fedora (Copr): [swaylock-effects](https://copr.fedorainfracloud.org/coprs/eddsalkield/swaylock-effects/)
   (thanks to Edd Salkield)
-* FreeBSD: [swaylock-effects](https://www.freshports.org/x11/swaylock-effects/)
 * Gentoo (GURU overlay): [swaylock-effects](https://gpo.zugaina.org/Overlays/guru/gui-apps/swaylock-effects)
 * T2 SDE: [swaylock-effects](https://t2sde.org/packages/swaylock-effects)
 

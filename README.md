@@ -90,6 +90,8 @@ The following table shows the relation between the swaylock-effect and swaylock 
 * Arch Linux (AUR): [swaylock-effects](https://aur.archlinux.org/packages/swaylock-effects/) / [swaylock-effects-git](https://aur.archlinux.org/packages/swaylock-effects-git/)
 * Fedora (Copr): [swaylock-effects](https://copr.fedorainfracloud.org/coprs/trs-sod/swaylock-effects)
 * FreeBSD: [swaylock-effects](https://www.freshports.org/x11/swaylock-effects/)
+* Guix: [swaylock-effects](https://packages.guix.gnu.org/packages/swaylock-effects)
+* Nix: [swaylock-effects](https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/window-managers/sway/lock-effects.nix)
 
 The original [mortie/swaylock-effects](https://github.com/mortie/swaylock-effects) (now unmaintained)
 has been packaged for:

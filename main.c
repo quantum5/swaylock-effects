@@ -1896,7 +1896,6 @@ int main(int argc, char **argv) {
 	// before ext_session_lock_manager_v1_lock(). After the screen is locked,
 	// no screenshot can be retrieved because normal rendering is blocked.
 	wl_list_for_each(surface, &state.surfaces, link) {
-		wl_output_add_listener(surface->output, &_wl_output_listener, surface);
 		surface->events_pending += 1;
 	};
 

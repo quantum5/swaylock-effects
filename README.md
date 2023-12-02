@@ -52,6 +52,9 @@ The main new features compared to upstream swaylock are:
 	  to a mouse event, and `--grace-no-touch` to not unlock as a response to
 	  a touch event.
 * `--fade-in <seconds>` to make the lock screen fade in.
+* `--indicator-image <path>` to display an image inside the indicator.
+* `--text-clear <string>`, `--text-caps-lock <string>`, `--text-ver <string>`,
+  and `--text-wrong <string>` to change the texts displayed inside the indicator.
 * Various effects which can be applied to the background image
 	* `--effect-blur <radius>x<times>`: Blur the image (thanks to yvbbrjdr's
 	  fast box blur algorithm in

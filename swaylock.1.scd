@@ -274,7 +274,7 @@ or an *uint32\_t swaylock_pixel(uint32\_t pix, int x, int y, int width, int heig
 
 # AUTHORS
 
-Maintained by Martin Dørum, forked from upstream Swaylock which is maintained
-by Drew DeVault.
+Maintained by Jakub Jirutka. This is a fork of the upstream Swaylock, which is
+maintained by Simon Ser, and it was originally forked by Martin Dørum.
 For more information about swaylock-effects development, see
-https://github.com/mortie/swaylock-effects.
+https://github.com/jirutka/swaylock-effects.

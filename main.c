@@ -957,9 +957,13 @@ static int parse_options(int argc, char **argv, struct swaylock_state *state,
 		LO_RING_WRONG_COLOR,
 		LO_SEP_COLOR,
 		LO_TEXT_COLOR,
+		LO_TEXT_CLEAR,
 		LO_TEXT_CLEAR_COLOR,
+		LO_TEXT_CAPS_LOCK,
 		LO_TEXT_CAPS_LOCK_COLOR,
+		LO_TEXT_VER,
 		LO_TEXT_VER_COLOR,
+		LO_TEXT_WRONG,
 		LO_TEXT_WRONG_COLOR,
 		LO_EFFECT_BLUR,
 		LO_EFFECT_PIXELATE,
@@ -1033,9 +1037,13 @@ static int parse_options(int argc, char **argv, struct swaylock_state *state,
 		{"ring-wrong-color", required_argument, NULL, LO_RING_WRONG_COLOR},
 		{"separator-color", required_argument, NULL, LO_SEP_COLOR},
 		{"text-color", required_argument, NULL, LO_TEXT_COLOR},
+		{"text-clear", required_argument, NULL, LO_TEXT_CLEAR},
 		{"text-clear-color", required_argument, NULL, LO_TEXT_CLEAR_COLOR},
+		{"text-caps-lock", required_argument, NULL, LO_TEXT_CAPS_LOCK},
 		{"text-caps-lock-color", required_argument, NULL, LO_TEXT_CAPS_LOCK_COLOR},
+		{"text-ver", required_argument, NULL, LO_TEXT_VER},
 		{"text-ver-color", required_argument, NULL, LO_TEXT_VER_COLOR},
+		{"text-wrong", required_argument, NULL, LO_TEXT_WRONG},
 		{"text-wrong-color", required_argument, NULL, LO_TEXT_WRONG_COLOR},
 		{"effect-blur", required_argument, NULL, LO_EFFECT_BLUR},
 		{"effect-pixelate", required_argument, NULL, LO_EFFECT_PIXELATE},
@@ -1481,9 +1489,21 @@ static int parse_options(int argc, char **argv, struct swaylock_state *state,
 				state->args.colors.text.input = parse_color(optarg);
 			}
 			break;
+		case LO_TEXT_CLEAR:
+			if (state) {
+				free(state->args.text_cleared);
+				state->args.text_cleared = strdup(optarg);
+			}
+			break;
 		case LO_TEXT_CLEAR_COLOR:
 			if (state) {
 				state->args.colors.text.cleared = parse_color(optarg);
+			}
+			break;
+		case LO_TEXT_CAPS_LOCK:
+			if (state) {
+				free(state->args.text_caps_lock);
+				state->args.text_caps_lock = strdup(optarg);
 			}
 			break;
 		case LO_TEXT_CAPS_LOCK_COLOR:
@@ -1491,9 +1511,21 @@ static int parse_options(int argc, char **argv, struct swaylock_state *state,
 				state->args.colors.text.caps_lock = parse_color(optarg);
 			}
 			break;
+		case LO_TEXT_VER:
+			if (state) {
+				free(state->args.text_verifying);
+				state->args.text_verifying = strdup(optarg);
+			}
+			break;
 		case LO_TEXT_VER_COLOR:
 			if (state) {
 				state->args.colors.text.verifying = parse_color(optarg);
+			}
+			break;
+		case LO_TEXT_WRONG:
+			if (state) {
+				free(state->args.text_wrong);
+				state->args.text_wrong = strdup(optarg);
 			}
 			break;
 		case LO_TEXT_WRONG_COLOR:
@@ -1815,6 +1847,11 @@ int main(int argc, char **argv) {
 		.datestr = strdup("%a, %x"),
 		.allow_fade = true,
 		.password_grace_period = 0,
+
+		.text_cleared = strdup("Cleared"),
+		.text_caps_lock = strdup("Caps Lock"),
+		.text_verifying = strdup("Verifying"),
+		.text_wrong = strdup("Wrong"),
 	};
 	wl_list_init(&state.images);
 	set_default_colors(&state.args.colors);

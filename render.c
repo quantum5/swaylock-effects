@@ -254,20 +254,20 @@ void render_frame(struct swaylock_surface *surface) {
 		cairo_set_font_size(cairo, font_size);
 		switch (state->auth_state) {
 		case AUTH_STATE_VALIDATING:
-			text = "Verifying";
+			text = state->args.text_verifying;
 			break;
 		case AUTH_STATE_INVALID:
-			text = "Wrong";
+			text = state->args.text_wrong;
 			break;
 		case AUTH_STATE_CLEAR:
-			text = "Cleared";
+			text = state->args.text_cleared;
 			break;
 		case AUTH_STATE_INPUT:
 		case AUTH_STATE_INPUT_NOP:
 		case AUTH_STATE_BACKSPACE:
 			// Caps Lock has higher priority
 			if (state->xkb.caps_lock && state->args.show_caps_lock_text) {
-				text = "Caps Lock";
+				text = state->args.text_caps_lock;
 			} else if (state->args.show_failed_attempts &&
 					state->failed_attempts > 0) {
 				if (state->failed_attempts > 999) {

@@ -214,14 +214,26 @@ Locks your Wayland session.
 *--text-color* <rrggbb[aa]>
 	Sets the color of the text.
 
+*--text-clear* <string>
+	Sets the string displayed when the password is cleared.
+
 *--text-clear-color* <rrggbb[aa]>
 	Sets the color of the text when cleared.
+
+*--text-caps-lock* <string>
+	Sets the string displayed when Caps Lock is active.
 
 *--text-caps-lock-color* <rrggbb[aa]>
 	Sets the color of the text when Caps Lock is active.
 
+*--text-ver* <string>
+	Sets the string displayed when the password is being verified.
+
 *--text-ver-color* <rrggbb[aa]>
 	Sets the color of the text when verifying.
+
+*--text-wrong* <string>
+	Sets the string displayed when the password is wrong.
 
 *--text-wrong-color* <rrggbb[aa]>
 	Sets the color of the text when invalid.
